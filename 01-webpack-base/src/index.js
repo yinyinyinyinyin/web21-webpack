@@ -1,12 +1,16 @@
-//引入lodash
-import _ from 'lodash';
+//引入图片
+import meinv from './img/timg.jpg';
 import './style.css';
 
-function com(){
-	var oDiv = document.createElement('div');
-	oDiv.innerHTML = _.join(['hello','webpack'] , ' ' );//将数组中的value值进行连接
-	oDiv.classList.add('hello');//给div添加样式
-	return oDiv;
+//创建图片对象
+var oImg = new Image();
+oImg.src = meinv;
+var oDiv = document.createElement('div');
+var oDiv2 = document.createElement('div');
+oImg.onload = function(){
+	oDiv.appendChild(oImg);
+	oDiv2.innerHTML = 'hello';
+	oDiv2.classList.add('hello');
+	document.body.appendChild(oDiv);
+	document.body.appendChild(oDiv2);
 }
-
-document.body.appendChild(com());

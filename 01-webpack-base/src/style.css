@@ -1,1 +1,14 @@
-.hello{color:blue;}
+/*添加字体*/
+@font-face{
+	font-family: "mtfont";
+	src:url("./font/mtfont.ttf");
+	font-weight: bold;
+	font-size:20px;
+	color:green;
+}
+
+.hello{
+	color:blue;
+	font-family: "mtfont";
+	
+	}

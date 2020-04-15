@@ -110,7 +110,7 @@ module.exports = {
 	--7.4 在cmd中运行 npm start
 	--7.5  在编辑器下直接运行index.html 查看效果
 	
-##8.加载器  loader  作用，可以将 scss、less、css、img、json 打包处理，添加到 dist的文件夹下面
+##8.加载器  loader  作用，可以将 scss、less、css、img、json 打包处理，添加到 dist的文件夹下面     ,加载css文件
 	--8.1 安装 loader
 	npm install --save-dev style-loader css-loader
 	或
@@ -147,8 +147,119 @@ function com(){
 
 document.body.appendChild(com());
 	```
-	--8.5 在 cmd上运行 npm  start ,打包
+	--8.5 修改 index.html
+```
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+	</head>
+	<body>
+		webpack的第一次旅行
+		<script src="./dist/bundle.js"></script>
+	</body>
+</html>
+	```
 	
-	--8.6 在编辑器下直接运行index.html 查看效果
+	--8.6 在 cmd上运行 npm  start ,打包
 	
+	--8.7 在编辑器下直接运行index.html 查看效果
 	
+##9.使用 loader 加载img图片
+	--9.1 安装加载图片的包
+	npm install --save-dev file-loader
+	或
+	cnpm install --save-dev file-loader
+	
+	--9.2 修改 webpack.config.js
+```
+{
+	test:/\.(png|svg|jpg|gif)/,//匹配图片
+	use:['file-loader']
+}
+	```
+	--9.3 将 timg.jpg  拷贝到项目中  src/img/timg.jpg
+	
+	--9.4 新建一个 src/index.js 文件，将原来的index.js 文件更改为 src/index-02.js
+```
+//引入图片
+import meinv from './img/timg.jpg';
+
+//创建图片对象
+var oImg = new Image();
+oImg.src = meinv;
+var oDiv = document.createElement('div');
+oImg.onload = function(){
+	oDiv.appendChild(oImg);
+	document.body.appendChild(oDiv);
+}
+	```
+	--9.5 在dist目录下创建 index.html
+```
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+	</head>
+	<body>
+		webpack的第一次旅行
+		<script src="./bundle.js"></script>
+	</body>
+</html>
+	```
+	
+	--9.6 在 cmd上运行 npm  start ,打包
+	
+	--9.7 在编辑器下直接运行dist/index.html 查看效果
+	
+##10. 使用loader加载字体图标库
+	--10.1 修改  webpack.config.js
+```
+{
+				test: /\.(woff|woff2|eot|ttf|otf)$/,//匹配所有的字体图标后缀名文件
+				use: ['file-loader']
+			}
+	```
+	--10.2 修改 src/index.js
+```
+//引入图片
+import meinv from './img/timg.jpg';
+import './style.css';
+
+//创建图片对象
+var oImg = new Image();
+oImg.src = meinv;
+var oDiv = document.createElement('div');
+var oDiv2 = document.createElement('div');
+oImg.onload = function(){
+	oDiv.appendChild(oImg);
+	oDiv2.innerHTML = 'hello';
+	oDiv2.classList.add('hello');
+	document.body.appendChild(oDiv);
+	document.body.appendChild(oDiv2);
+}
+	```
+	--10.3 修改 src/style.css
+```
+/*添加字体*/
+@font-face{
+	font-family: "mtfont";
+	src:url("./font/mtfont.ttf");
+	font-weight: bold;
+	font-size:20px;
+	color:green;
+}
+
+.hello{
+	color:blue;
+	font-family: "mtfont";
+	
+	}
+	```
+	--10.4  在 cmd上运行 npm  start ,打包
+	
+	--10.5 在编辑器下直接运行dist/index.html 查看效果

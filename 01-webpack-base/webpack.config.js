@@ -15,6 +15,14 @@ module.exports = {
 			{
 				test:/\.css/,//匹配所有的css扩展名的文件
 				use:['style-loader','css-loader']//使用的插件
+			},
+			{
+				test:/\.(png|svg|jpg|gif)/,//匹配图片
+				use:['file-loader']
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|otf)$/,//匹配所有的字体图标后缀名文件
+				use: ['file-loader']
 			}
 		]
 	}
