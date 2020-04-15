@@ -217,6 +217,7 @@ oImg.onload = function(){
 	--9.7 在编辑器下直接运行dist/index.html 查看效果
 	
 ##10. 使用loader加载字体图标库
+	--10.0 将 mtfont.ttf 拷贝到 src/font/mtfont.ttf
 	--10.1 修改  webpack.config.js
 ```
 {
@@ -263,3 +264,36 @@ oImg.onload = function(){
 	--10.4  在 cmd上运行 npm  start ,打包
 	
 	--10.5 在编辑器下直接运行dist/index.html 查看效果
+
+##11. 使用loader 加载数据
+	--11.1 安装插件 
+	npm install --save-dev xml-loader
+	或
+	cnpm install --save-dev xml-loader
+	
+	--11.2 修改  webpack.config.js
+```
+{
+				test:/\.xml$/,//匹配所有的xml的文件
+				use:['xml-loader']
+			}
+	```
+	
+	--11.3 将json、xml数据的文件拷贝过来 src/data/citys.json   src/data/dta.xml
+	
+	--11.4 添加了新的 src/index.js  ;将原来的index.js 重命名为index-03.js
+	
+```
+//引入json  
+import citys from  './data/citys.json';
+console.log(citys);
+
+//引入xml文件
+import dataxml from './data/data.xml';
+console.log(dataxml);
+
+	```
+	--11.5在 cmd上运行 npm  start ,打包
+	
+	--11.6 在编辑器下直接运行dist/index.html 查看效果
+	

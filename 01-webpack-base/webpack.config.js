@@ -13,16 +13,20 @@ module.exports = {
 	module:{
 		rules:[
 			{
-				test:/\.css/,//匹配所有的css扩展名的文件
+				test:/\.css$/,//匹配所有的css扩展名的文件
 				use:['style-loader','css-loader']//使用的插件
 			},
 			{
-				test:/\.(png|svg|jpg|gif)/,//匹配图片
+				test:/\.(png|svg|jpg|gif)$/,//匹配图片
 				use:['file-loader']
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/,//匹配所有的字体图标后缀名文件
 				use: ['file-loader']
+			},
+			{
+				test:/\.xml$/,//匹配所有的xml的文件
+				use:['xml-loader']
 			}
 		]
 	}
