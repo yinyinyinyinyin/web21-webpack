@@ -1,9 +1,12 @@
-console.log("hello webpack");
-
 //引入lodash
 import _ from 'lodash';
+import './style.css';
 
-//使用 里面的函数
-var arr = _.chunk(['a','b','c','d'],2);
+function com(){
+	var oDiv = document.createElement('div');
+	oDiv.innerHTML = _.join(['hello','webpack'] , ' ' );//将数组中的value值进行连接
+	oDiv.classList.add('hello');//给div添加样式
+	return oDiv;
+}
 
-console.log(arr);
+document.body.appendChild(com());

@@ -110,5 +110,45 @@ module.exports = {
 	--7.4 在cmd中运行 npm start
 	--7.5  在编辑器下直接运行index.html 查看效果
 	
+##8.加载器  loader  作用，可以将 scss、less、css、img、json 打包处理，添加到 dist的文件夹下面
+	--8.1 安装 loader
+	npm install --save-dev style-loader css-loader
+	或
+	cnpm install --save-dev style-loader css-loader
+	
+	--8.2 修改 webpack.config.js
+```
+//配置解析css文件
+	module:{
+		rules:[
+			{
+				test:/\.css/,//匹配所有的css扩展名的文件
+				use:['style-loader','css-loader']//使用的插件
+			}
+		]
+	}
+	```
+	--8.3 创建  src/style.css
+```
+.hello{color:blue;}
+	```
+	--8.4 添加了新的 src/index.js  ;将原来的index.js 重命名为index-01.js
+```
+//引入lodash
+import _ from 'lodash';
+import './style.css';
+
+function com(){
+	var oDiv = document.createElement('div');
+	oDiv.innerHTML = _.join(['hello','webpack'] , ' ' );//将数组中的value值进行连接
+	oDiv.classList.add('hello');//给div添加样式
+	return oDiv;
+}
+
+document.body.appendChild(com());
+	```
+	--8.5 在 cmd上运行 npm  start ,打包
+	
+	--8.6 在编辑器下直接运行index.html 查看效果
 	
 	
