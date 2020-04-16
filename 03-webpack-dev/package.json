@@ -1,0 +1,18 @@
+{
+  "name": "03-webpack-dev",
+  "version": "1.0.0",
+  "description": "--1.1 创建03-webpack-dev的文件夹 ，\r \t--1.2 初始化项目 npm init",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"build":"webpack --config ./config/webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^4.2.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
