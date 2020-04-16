@@ -1,0 +1,1 @@
+console.log('webpack config js 文件运行了！');
